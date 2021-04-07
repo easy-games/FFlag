@@ -310,4 +310,4 @@ function SheetValues.new(SpreadId)
 end
 
 
-return SheetValues
+return { default =  SheetValues }
