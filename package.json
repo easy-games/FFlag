@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/fflag",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TypeScript wrapper for Boatbomber's SheetValues FFlag implementation.",
   "main": "out/init.lua",
   "scripts": {
