@@ -10,7 +10,8 @@ export class FFlagManager {
 
     GetFFlag<T extends FFlagValueTypes>(fflag: FFlag<T>) {
         const value = this.SheetManager.Values[fflag.Name];
-        if (!fflag.Guard(value)) throw `Value "${value}" (${typeOf(value)}) for FFLag ${fflag.Name} is incorrect type`;
+        if (value && !fflag.Guard(value))
+            throw `Value "${value}" (${typeOf(value)}) for FFLag ${fflag.Name} is incorrect type`;
 
         if (!value) return fflag.DefaultValue;
         return value;
