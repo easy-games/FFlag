@@ -1,9 +1,9 @@
-declare type FFlagValueTypes = number | boolean | string | Vector3 | Vector2 | UDim2 | UDim;
+export type FFlagValueTypes = number | boolean | string | Vector3 | Vector2 | UDim2 | UDim;
 declare type FFlagValues = { [key: string]: FFlagValueTypes };
 
 declare type LastSource = "Google API" | "Datastore Override" | "Datastore" | "MsgService Subscription";
 
-declare interface SheetManager {
+export interface SheetManager {
     Values: FFlagValues;
 
     /** Unix timestamp of the last time SheetManager.Values was updated */
@@ -35,4 +35,5 @@ declare interface SheetManagerConstructor {
     new (SpreadId: string): SheetManager;
 }
 
-export = SheetManagerConstructor;
+declare const SheetValues: SheetManagerConstructor;
+export default SheetValues;
