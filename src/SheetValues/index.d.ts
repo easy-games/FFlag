@@ -1,4 +1,4 @@
-export type FFlagValueTypes = number | boolean | string | Vector3 | Vector2 | UDim2 | UDim;
+export type FFlagValueTypes = number | boolean | string | Vector3 | Vector2 | UDim2 | UDim | Color3 | BrickColor | RGB | CFrame | Enum | Rect;
 declare type FFlagValues = { [key: string]: FFlagValueTypes };
 
 declare type LastSource = "Google API" | "Datastore Override" | "Datastore" | "MsgService Subscription";
@@ -18,7 +18,7 @@ export interface SheetManager {
     LastSource: LastSource;
 
     /** Fires when SheetManager.Values is updated */
-    Updated: RBXScriptSignal<(newValues: FFlagValues) => void>;
+    Changed: RBXScriptSignal<(newValues: FFlagValues) => void>;
 
     /**
      * Forces gets the latest values from the sheet
@@ -26,6 +26,11 @@ export interface SheetManager {
      * *(This is called automatically and is only exposed for critical cases)*
      */
     UpdateValues(): void;
+
+    /**  Returns the Value or DefaultValue if the Value doesn't exist */
+    GetValue(valueName: string, defaultValue: any): FFlagValues
+
+    GetValueChangedSignal(valueName: string): RBXScriptSignal<(newValue: FFlagValues, oldValue: FFlagValues) => void>;
 
     /** Cleans up the SheetManager */
     Destroy(): void;
