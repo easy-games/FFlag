@@ -16,6 +16,8 @@ export class FFlagManager {
 
         return value;
     }
+
+    /** needs further updating */
 }
 
 export class FFlag<T extends FFlagValueTypes> {
